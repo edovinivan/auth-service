@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres_blog
+    image: "postgres:13.2"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data/
+      - ./sql:/docker-entrypoint-initdb.d/:rw
+    env_file:
+      - ./database.dev.env
+    ports:
+      - "5444:5432"
+    networks:
+      - backend
+  pgadmin:
+    container_name: pgadmin_blog
+    image: "dpage/pgadmin4:5.1"
+    env_file:
+      - ./database.dev.env
+    ports:
+      - "5053:80"
+    networks:
+      - backend
+  keycloak:
+    container_name: keycloak_blog
+    image: keycloak/keycloak:20.0.2
+    command: start-dev
+    env_file:
+      - ./keycloak.dev.env
+    depends_on:
+      - "postgres"
+    ports:
+      - "8180:8080"
+      - "8787:8787" # debug port
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
