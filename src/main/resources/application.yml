@@ -1,26 +1,8 @@
 server:
   port: ${SERVER_PORT:8085}
 
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: ks-auth-client
-            authorization-grant-type: authorization_code
-            scope: openid
-            provider: auth
-        provider:
-          auth:
-            issuer-uri: http://localhost:8180/realms/kc-auth-realm
-            user-name-attribute: preferred_username
-  application.name: ${APPLICATION_NAME:auth}
 keycloak:
-  auth-server-url: ${KEYCLOAK_URL:http://localhost:8180}
-  realm: ${REALM:kc-auth-realm}
-  resource: ${RESOURCE:ks-auth-client}
-  public-client: true
+  enabled: false
 org:
   keycloak:
     url:
