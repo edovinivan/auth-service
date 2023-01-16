@@ -3,6 +3,11 @@ server:
 
 keycloak:
   enabled: false
+
+spring:
+  thymeleaf:
+    check-template-location: false
+
 org:
   keycloak:
     url:
