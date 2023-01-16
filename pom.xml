@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.otr</groupId>
-	<artifactId>sbkeycloak</artifactId>
+	<artifactId>auth-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sbkeycloak</name>
-	<description>Demo project for Spring Boot and Keycloak</description>
+	<name>auth-service</name>
+	<description>auth-service for project </description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

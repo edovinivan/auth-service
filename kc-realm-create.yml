@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  create-realm:
+    container_name: create_realm_blog
+    build: kc-builder .
+    env_file:
+      - ./keycloak.dev.env
+    volumes:
+      - ./kc-property:/kc-property:rw
+    ports:
+      - "8182:8080"
+      - "8788:8787" # debug port
+    command:
+      - export --dir /kc-property --file realm.json --realm kc-auth-realm --users realm_file
+    restart: "no"
+    networks:
+      - backend
+networks:
+  backend:
+    name: backend
+    driver: bridge
