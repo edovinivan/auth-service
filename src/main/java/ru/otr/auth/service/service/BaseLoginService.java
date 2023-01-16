@@ -14,7 +14,6 @@ import ru.otr.auth.service.property.LoginProperty;
 @Service
 @RequiredArgsConstructor
 public class BaseLoginService implements LoginService{
-
     private final RestTemplate restTemplate;
     private final LoginProperty loginProperty;
 
