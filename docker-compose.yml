@@ -27,7 +27,8 @@ services:
     image: quay.io/keycloak/keycloak:20.0.3
     command: [
         "start-dev",
-        "--import-realm"
+        "--import-realm",
+        "--features=declarative-user-profile"
     ]
     restart: always
     volumes:
