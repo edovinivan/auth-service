@@ -13,5 +13,10 @@ org:
     url:
       base: ${KEYCLOAK_URL:http://localhost:8180}
       login: /realms/${REALM:kc-auth-realm}/protocol/openid-connect/token
+    auth:
+      user: ${KEYCLOAK_AUTH_USER:userservice}
+      password: ${KEYCLOAK_AUTH_PASSWORD:123}
+      client_id: ${KEYCLOAK_AUTH_CLIENT_ID:ks-auth-client}
+
 
 

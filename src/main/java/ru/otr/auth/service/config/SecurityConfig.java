@@ -28,7 +28,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/auth/*").and()
                 .authorizeRequests()
                 .antMatchers("/api/*").authenticated()
-                .antMatchers("/auth/*").permitAll();
+                .antMatchers("/auth/*", "/some/*").permitAll();
     }
 
     @Bean
