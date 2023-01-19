@@ -80,4 +80,11 @@ public class LoginProperty {
         return !(credential == null || credential.isEmpty());
     }
 
+    @Getter
+    @Setter
+    public static class Auth {
+        private String user;
+        private String password;
+    }
+
 }

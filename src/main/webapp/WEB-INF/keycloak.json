@@ -5,5 +5,8 @@
   "resource": "ks-auth-client",
   "public-client": true,
   "confidential-port": 0,
-  "principal-attribute": "name"
+  "principal-attribute": "name",
+  "bearer-only": true,
+  "enable-cors" : true,
+  "use-resource-role-mappings" : true
 }

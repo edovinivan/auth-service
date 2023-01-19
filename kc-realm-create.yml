@@ -3,7 +3,7 @@ version: "3.9"
 services:
   create-realm:
     container_name: create_realm_blog
-    build: kc-builder .
+    build: .
     env_file:
       - ./keycloak.dev.env
     volumes:
