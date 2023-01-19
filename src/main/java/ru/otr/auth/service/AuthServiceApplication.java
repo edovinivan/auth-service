@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import ru.otr.auth.service.property.LoginProperty;
 
 @SpringBootApplication
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class AuthServiceApplication {
 
 	public static void main(String[] args) {
