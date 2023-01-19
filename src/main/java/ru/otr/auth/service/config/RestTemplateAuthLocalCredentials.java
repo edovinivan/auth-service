@@ -2,6 +2,7 @@ package ru.otr.auth.service.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,6 +16,8 @@ import ru.otr.auth.service.property.LoginProperty;
 import java.util.List;
 
 
+
+@EnableConfigurationProperties(LoginProperty.class)
 @Component("restTemplateLocalCredentials")
 @Slf4j
 public class RestTemplateAuthLocalCredentials extends RestTemplate {
