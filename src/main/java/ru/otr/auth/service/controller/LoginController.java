@@ -17,9 +17,4 @@ public class LoginController {
         return loginService.getToken(loginDto);
     }
 
-    @GetMapping(value = "/loginTry")
-    public String getToken(){
-        return "Success";
-    }
-
 }
