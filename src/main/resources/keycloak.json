@@ -1,6 +1,6 @@
 {
   "realm": "kc-auth-realm",
-  "auth-server-url": "http://localhost:8180/",
+  "auth-server-url": "http://auth-service:8180/",
   "ssl-required": "external",
   "resource": "ks-auth-client",
   "public-client": true,
@@ -8,5 +8,5 @@
   "principal-attribute": "name",
   "bearer-only": true,
   "enable-cors" : true,
-  "use-resource-role-mappings" : true
+  "use-resource-role-mappings" : false
 }

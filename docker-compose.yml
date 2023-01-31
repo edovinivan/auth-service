@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   postgres:
-    container_name: postgres_blog
+    container_name: postgres
     image: "postgres:13.2"
     volumes:
       - ./db-data:/var/lib/postgresql/data/
@@ -14,7 +14,7 @@ services:
     networks:
       - backend
   pgadmin:
-    container_name: pgadmin_blog
+    container_name: pgadmin
     image: "dpage/pgadmin4:5.1"
     env_file:
       - ./database.dev.env
@@ -23,7 +23,7 @@ services:
     networks:
       - backend
   keycloak:
-    container_name: keycloak_blog
+    container_name: auth-service
     image: quay.io/keycloak/keycloak:20.0.3
     command: [
         "start-dev",
@@ -40,6 +40,51 @@ services:
     ports:
       - "8180:8080"
       - "8787:8787" # debug port
+    networks:
+      - backend
+  widget-main:
+    container_name: widget-main-widget
+    image: fort163/widget-main:1.0
+    ports:
+      - "3001:3001"
+    networks:
+      - backend
+  currency-service:
+    container_name: currency-service
+    image: anedomets/currency:1.0
+    command: [
+        "bash -c 'touch /app.jar'"
+    ]
+    environment:
+      KEYCLOAK_JSON_PATH: file:keycloak.json
+    ports:
+      - "8010:8010"
+    networks:
+      - backend
+  currency-widget:
+    container_name: currency-widget
+    image: anedomets/currency-widget:1.0
+    ports:
+      - "3010:3010"
+    networks:
+      - backend
+  message-service:
+    container_name: message-service
+    image: ivanedovin/message-service:1.0
+    environment:
+      KEYCLOAK_JSON_PATH: file:keycloak.json
+    command: [
+        "bash -c 'touch /resource.jar'"
+    ]
+    ports:
+      - "8020:8020"
+    networks:
+      - backend
+  message-widget:
+    container_name: message-widget
+    image: ivanedovin/message-widget:1.0
+    ports:
+      - "3020:3020"
     networks:
       - backend
 

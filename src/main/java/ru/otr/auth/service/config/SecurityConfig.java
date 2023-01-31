@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,7 +42,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
-        http.addFilter(corsFilter().getFilter()).csrf().ignoringAntMatchers("/auth/*").and()
+        http.addFilter(corsFilter().getFilter()).csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/*").authenticated()
                 .antMatchers("/auth/*", "/some/*").permitAll();

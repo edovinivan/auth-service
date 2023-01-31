@@ -3,6 +3,7 @@ server:
 
 keycloak:
   enabled: false
+  configurationFile: ${KEYCLOAK_JSON_PATH:file:src/main/resources/keycloak.json}
 
 spring:
   thymeleaf:
