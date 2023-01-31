@@ -52,6 +52,7 @@ services:
   currency-service:
     container_name: currency-service
     image: anedomets/currency:1.0
+    restart: always
     command: [
         "bash -c 'touch /app.jar'"
     ]
@@ -71,6 +72,7 @@ services:
   message-service:
     container_name: message-service
     image: ivanedovin/message-service:1.0
+    restart: always
     environment:
       KEYCLOAK_JSON_PATH: file:keycloak.json
     command: [
