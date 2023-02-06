@@ -1,6 +1,22 @@
 version: "3.9"
 
 services:
+  widget_service:
+    container_name: widget-service
+    image: nastyakirry/widget-service:1.0
+    restart: always
+    command: [
+          "bash -c 'touch /widget.jar'"
+      ]
+    environment:
+      KEYCLOAK_JSON_PATH: file:keycloak.json
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/app
+    depends_on:
+      - "postgres"
+    ports:
+      - "8086:8086"
+    networks:
+      - backend
   postgres:
     container_name: postgres
     image: "postgres:13.2"
