@@ -105,6 +105,20 @@ services:
       - "3020:3020"
     networks:
       - backend
+  user-service:
+    container_name: user-service
+    image: fort163/user-service:1.0
+    restart: always
+    environment:
+      KEYCLOAK_URL: http://auth-service:8080
+      KEYCLOAK_JSON_PATH: file:keycloak.json
+    command: [
+        "bash -c 'touch /resource.jar'"
+    ]
+    ports:
+      - "8050:8050"
+    networks:
+      - backend
 
 networks:
   backend:
